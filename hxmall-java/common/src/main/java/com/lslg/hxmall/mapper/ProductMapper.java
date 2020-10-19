@@ -1,7 +1,6 @@
 package com.lslg.hxmall.mapper;
 
 import com.lslg.hxmall.entity.Product;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * (Product)表数据库访问层

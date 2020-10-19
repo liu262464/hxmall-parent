@@ -1,7 +1,7 @@
 package com.lslg.hxmall.entity;
 
-import java.util.LocalDateTime;
 import java.io.Serializable;
+import java.util.LocalDateTime;
 
 /**
  * (Order)实体类
@@ -12,46 +12,46 @@ import java.io.Serializable;
 public class Order implements Serializable {
     private static final long serialVersionUID = -99637068628404496L;
     /**
-    * ID
-    */
+     * ID
+     */
     private Integer id;
     /**
-    * 商品ID
-    */
+     * 商品ID
+     */
     private Integer productId;
     /**
-    * 买家ID
-    */
+     * 买家ID
+     */
     private Integer buyerId;
     /**
-    * 卖家id
-    */
+     * 卖家id
+     */
     private Integer sellerId;
     /**
-    * 支付状态 0-未支付，1-已支付
-    */
+     * 支付状态 0-未支付，1-已支付
+     */
     private Object state;
     /**
-    * 订单号
-    */
+     * 订单号
+     */
     private String orderNo;
     /**
-    * 地址
-    */
+     * 地址
+     */
     private String address;
     /**
-    * 商品数量
-    */
+     * 商品数量
+     */
     private Integer num;
     /**
-    * 商品总价
-    */
+     * 商品总价
+     */
     private Double price;
-    
+
     private Object status;
-    
+
     private LocalDateTime createtime;
-    
+
     private LocalDateTime modifiedtime;
 
 

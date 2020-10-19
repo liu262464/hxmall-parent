@@ -16,21 +16,21 @@ import java.time.LocalDateTime;
 public class Cart implements Serializable {
     private static final long serialVersionUID = -92754826832608974L;
     /**
-    * id
-    */
+     * id
+     */
     @TableId(type = IdType.AUTO)
     private Integer id;
     /**
-    * 用户ID
-    */
+     * 用户ID
+     */
     private Integer userId;
     /**
-    * 商品ID
-    */
+     * 商品ID
+     */
     private Integer productId;
     /**
-    * 数量
-    */
+     * 数量
+     */
     private Integer num;
 
     @TableLogic
@@ -41,8 +41,6 @@ public class Cart implements Serializable {
 
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime modifiedtime;
-
-
 
 
 }

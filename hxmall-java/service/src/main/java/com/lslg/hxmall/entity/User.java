@@ -17,33 +17,33 @@ import java.time.LocalDateTime;
 public class User implements Serializable {
     private static final long serialVersionUID = 672990308600098053L;
     /**
-    * 用户ID
-    */
+     * 用户ID
+     */
     @TableId(type = IdType.AUTO)
     private Integer id;
     /**
-    * 账号
-    */
+     * 账号
+     */
     private String account;
     /**
-    * 用户名
-    */
+     * 用户名
+     */
     private String username;
     /**
-    * 0-未知，1-男，2-女
-    */
+     * 0-未知，1-男，2-女
+     */
     private GenderEnum gender;
     /**
-    * 头像
-    */
+     * 头像
+     */
     private String avatar;
     /**
-    * 密码
-    */
+     * 密码
+     */
     private String password;
     /**
-    * 地址
-    */
+     * 地址
+     */
     private String address;
 
     @TableLogic

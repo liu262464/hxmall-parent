@@ -6,6 +6,7 @@ import com.lslg.hxmall.entity.enums.PayStateEnum;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
 /**
  * (Order)实体类
  *
@@ -17,41 +18,41 @@ import java.time.LocalDateTime;
 public class Order implements Serializable {
     private static final long serialVersionUID = -58702052591724198L;
     /**
-    * ID
-    */
+     * ID
+     */
     @TableId(type = IdType.AUTO)
     private Integer id;
     /**
-    * 商品ID
-    */
+     * 商品ID
+     */
     private Integer productId;
     /**
-    * 买家ID
-    */
+     * 买家ID
+     */
     private Integer buyerId;
     /**
-    * 卖家id
-    */
+     * 卖家id
+     */
     private Integer sellerId;
     /**
-    * 支付状态 0-未支付，1-已支付
-    */
+     * 支付状态 0-未支付，1-已支付
+     */
     private PayStateEnum state;
     /**
-    * 订单号
-    */
+     * 订单号
+     */
     private String orderNo;
     /**
-    * 地址
-    */
+     * 地址
+     */
     private String address;
     /**
-    * 商品数量
-    */
+     * 商品数量
+     */
     private Integer num;
     /**
-    * 商品总价
-    */
+     * 商品总价
+     */
     private BigDecimal price;
 
     @TableLogic

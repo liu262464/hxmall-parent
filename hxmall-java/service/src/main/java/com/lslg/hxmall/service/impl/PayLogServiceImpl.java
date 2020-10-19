@@ -14,6 +14,6 @@ import org.springframework.stereotype.Service;
  * @since 2020-10-19 18:02:20
  */
 @Service("payLogService")
-public class PayLogServiceImpl extends ServiceImpl<PayLogMapper,PayLog> implements PayLogService {
-  
+public class PayLogServiceImpl extends ServiceImpl<PayLogMapper, PayLog> implements PayLogService {
+
 }

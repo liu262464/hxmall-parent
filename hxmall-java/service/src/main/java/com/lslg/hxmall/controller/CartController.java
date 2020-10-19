@@ -1,10 +1,7 @@
 package com.lslg.hxmall.controller;
 
-import com.lslg.hxmall.entity.Cart;
-import com.lslg.hxmall.service.CartService;
-import org.springframework.web.bind.annotation.*;
-
-import javax.annotation.Resource;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * (Cart)表控制层
@@ -15,5 +12,5 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("cart")
 public class CartController {
-  
+
 }

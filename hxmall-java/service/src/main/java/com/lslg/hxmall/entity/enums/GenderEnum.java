@@ -6,11 +6,11 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
  * @author Anyu
  * @since 2020/10/19
  */
-public enum  GenderEnum implements ICode{
+public enum GenderEnum implements ICode {
     //性别
-    UNKNOWN(0,"未知"),
-    MALE(1,"男"),
-    FEMALE(2,"女");
+    UNKNOWN(0, "未知"),
+    MALE(1, "男"),
+    FEMALE(2, "女");
 
     @EnumValue
     private int code;

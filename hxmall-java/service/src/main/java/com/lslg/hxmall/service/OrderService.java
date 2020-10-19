@@ -2,7 +2,6 @@ package com.lslg.hxmall.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lslg.hxmall.entity.Order;
-import java.util.List;
 
 /**
  * (Order)表服务接口

@@ -6,9 +6,9 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
  * @author Anyu
  * @since 2020/10/19
  */
-public enum PayTypeEnum implements ICode{
+public enum PayTypeEnum implements ICode {
     //
-    WECHART(1,"微信");
+    WECHART(1, "微信");
 
     @EnumValue
     private int code;

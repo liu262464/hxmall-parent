@@ -5,8 +5,6 @@ import com.lslg.hxmall.mapper.ProductMapper;
 import com.lslg.hxmall.service.ProductService;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-
 
 /**
  * (Product)表服务实现类
@@ -15,6 +13,6 @@ import javax.annotation.Resource;
  * @since 2020-10-19 18:02:21
  */
 @Service("productService")
-public class ProductServiceImpl extends ServiceImpl<ProductMapper,Product> implements ProductService {
-  
+public class ProductServiceImpl extends ServiceImpl<ProductMapper, Product> implements ProductService {
+
 }

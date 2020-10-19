@@ -1,7 +1,6 @@
 package com.lslg.hxmall.mapper;
 
 import com.lslg.hxmall.entity.Order;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * (Order)表数据库访问层
