@@ -1,6 +1,9 @@
 package com.lslg.hxmall.entity;
 
 
+import com.baomidou.mybatisplus.annotation.*;
+import com.lslg.hxmall.entity.enums.GenderEnum;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -10,11 +13,13 @@ import java.time.LocalDateTime;
  * @author Anyu
  * @since 2020-10-19 18:02:22
  */
+@TableName(value = "user")
 public class User implements Serializable {
     private static final long serialVersionUID = 672990308600098053L;
     /**
     * 用户ID
     */
+    @TableId(type = IdType.AUTO)
     private Integer id;
     /**
     * 账号
@@ -27,7 +32,7 @@ public class User implements Serializable {
     /**
     * 0-未知，1-男，2-女
     */
-    private Object gender;
+    private GenderEnum gender;
     /**
     * 头像
     */
@@ -40,15 +45,14 @@ public class User implements Serializable {
     * 地址
     */
     private String address;
-    
-    private Object status;
-    /**
-    * 创建时间
-    */
+
+    @TableLogic
+    private Integer status;
+
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createtime;
-    /**
-    * 修改时间
-    */
+
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime modifiedtime;
 
 

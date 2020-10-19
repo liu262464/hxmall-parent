@@ -1,6 +1,10 @@
 package com.lslg.hxmall.entity;
 
+import com.baomidou.mybatisplus.annotation.*;
+import com.lslg.hxmall.entity.enums.ProductTypeEnum;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -9,11 +13,13 @@ import java.time.LocalDateTime;
  * @author Anyu
  * @since 2020-10-19 18:02:43
  */
+@TableName(value = "product")
 public class Product implements Serializable {
     private static final long serialVersionUID = 990046723926746200L;
     /**
     * id
     */
+    @TableId(type = IdType.AUTO)
     private Integer id;
     /**
     * 商品名
@@ -30,11 +36,11 @@ public class Product implements Serializable {
     /**
     * 价格
     */
-    private Double price;
+    private BigDecimal price;
     /**
     * 类型
     */
-    private Object type;
+    private ProductTypeEnum type;
     /**
     * 库存
     */
@@ -46,10 +52,13 @@ public class Product implements Serializable {
     /**
     * 0- 正常 1-删除
     */
-    private Object status;
-    
+    @TableLogic
+    private Integer status;
+
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createtime;
-    
+
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime modifiedtime;
 
 }

@@ -1,7 +1,12 @@
 package com.lslg.hxmall.entity;
 
 
+import com.baomidou.mybatisplus.annotation.*;
+import com.lslg.hxmall.entity.enums.PayTypeEnum;
+import com.lslg.hxmall.entity.enums.TradeStateEnum;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -10,11 +15,13 @@ import java.time.LocalDateTime;
  * @author Anyu
  * @since 2020-10-19 18:02:19
  */
+@TableName(value = "pay_log")
 public class PayLog implements Serializable {
     private static final long serialVersionUID = 767844724279614243L;
     /**
     * id
     */
+    @TableId(type = IdType.AUTO)
     private Integer id;
     /**
     * 订单号
@@ -27,7 +34,7 @@ public class PayLog implements Serializable {
     /**
     * 支付金额（分）
     */
-    private Double totalFee;
+    private BigDecimal totalFee;
     /**
     * 交易流水号
     */
@@ -35,20 +42,22 @@ public class PayLog implements Serializable {
     /**
     * 交易状态
     */
-    private Object tradeState;
+    private TradeStateEnum tradeState;
     /**
     * 支付类型
     */
-    private Object payType;
+    private PayTypeEnum payType;
     /**
     * 0-存在，1-逻辑删除
     */
-    private Object status;
-    
-    private LocalDateTime createtime;
-    
-    private LocalDateTime modifiedtime;
+    @TableLogic
+    private Integer status;
 
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createtime;
+
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime modifiedtime;
 
 
 }

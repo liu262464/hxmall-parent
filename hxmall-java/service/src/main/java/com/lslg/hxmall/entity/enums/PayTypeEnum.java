@@ -6,20 +6,19 @@ import com.baomidou.mybatisplus.annotation.EnumValue;
  * @author Anyu
  * @since 2020/10/19
  */
-public enum  GenderEnum implements ICode{
-    //性别
-    UNKNOWN(0,"未知"),
-    MALE(1,"男"),
-    FEMALE(2,"女");
+public enum PayTypeEnum implements ICode{
+    //
+    WECHART(1,"微信");
 
     @EnumValue
     private int code;
     private String desc;
 
-    GenderEnum(int code, String desc) {
+    PayTypeEnum(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }
+
 
     @Override
     public int getCode() {

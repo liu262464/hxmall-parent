@@ -3,20 +3,20 @@ package com.lslg.hxmall.entity.enums;
 import com.baomidou.mybatisplus.annotation.EnumValue;
 
 /**
+ * 支付状态
  * @author Anyu
  * @since 2020/10/19
  */
-public enum  GenderEnum implements ICode{
-    //性别
-    UNKNOWN(0,"未知"),
-    MALE(1,"男"),
-    FEMALE(2,"女");
+public enum PayStateEnum implements ICode{
+    //0-未支付，1-已支付
+    UNPAID(0,"未支付"),
+    PAID(1,"已支付");
 
     @EnumValue
     private int code;
     private String desc;
 
-    GenderEnum(int code, String desc) {
+    PayStateEnum(int code, String desc) {
         this.code = code;
         this.desc = desc;
     }

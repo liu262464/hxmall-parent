@@ -1,6 +1,10 @@
 package com.lslg.hxmall.entity;
 
+import com.baomidou.mybatisplus.annotation.*;
+import com.lslg.hxmall.entity.enums.PayStateEnum;
+
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 /**
  * (Order)实体类
@@ -9,11 +13,13 @@ import java.time.LocalDateTime;
  * @since 2020-10-19 18:03:09
  */
 
+@TableName(value = "order")
 public class Order implements Serializable {
     private static final long serialVersionUID = -58702052591724198L;
     /**
     * ID
     */
+    @TableId(type = IdType.AUTO)
     private Integer id;
     /**
     * 商品ID
@@ -30,7 +36,7 @@ public class Order implements Serializable {
     /**
     * 支付状态 0-未支付，1-已支付
     */
-    private int state;
+    private PayStateEnum state;
     /**
     * 订单号
     */
@@ -46,13 +52,15 @@ public class Order implements Serializable {
     /**
     * 商品总价
     */
-    private Double price;
-    
-    private Object status;
-    
-    private LocalDateTime createtime;
-    
-    private LocalDateTime modifiedtime;
+    private BigDecimal price;
 
+    @TableLogic
+    private Integer status;
+
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime createtime;
+
+    @TableField(fill = FieldFill.INSERT)
+    private LocalDateTime modifiedtime;
 
 }
