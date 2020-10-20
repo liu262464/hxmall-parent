@@ -4,6 +4,7 @@ package com.lslg.hxmall.entity;
 import com.baomidou.mybatisplus.annotation.*;
 import com.lslg.hxmall.entity.enums.PayTypeEnum;
 import com.lslg.hxmall.entity.enums.TradeStateEnum;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -15,6 +16,7 @@ import java.time.LocalDateTime;
  * @author Anyu
  * @since 2020-10-19 18:02:19
  */
+@Data
 @TableName(value = "pay_log")
 public class PayLog implements Serializable {
     private static final long serialVersionUID = 767844724279614243L;

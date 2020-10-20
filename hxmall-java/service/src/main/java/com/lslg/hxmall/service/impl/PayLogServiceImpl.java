@@ -1,11 +1,15 @@
 package com.lslg.hxmall.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.wxpay.sdk.WXPayUtil;
 import com.lslg.hxmall.base.HxException;
 import com.lslg.hxmall.entity.Order;
 import com.lslg.hxmall.entity.PayLog;
+import com.lslg.hxmall.entity.enums.PayStateEnum;
+import com.lslg.hxmall.entity.enums.PayTypeEnum;
+import com.lslg.hxmall.entity.enums.TradeStateEnum;
 import com.lslg.hxmall.mapper.PayLogMapper;
 import com.lslg.hxmall.service.OrderService;
 import com.lslg.hxmall.service.PayLogService;
@@ -16,6 +20,8 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,5 +84,59 @@ public class PayLogServiceImpl extends ServiceImpl<PayLogMapper, PayLog> impleme
             throw new HxException(20001,"生成二维码地址失败!");
         }
 
+    }
+
+    @Override
+    public Map queryPayState(String orderNo) {
+        try {
+            //封装查询参数
+            Map map = new HashMap();
+            map.put("appid", ConstantUtils.APP_ID);
+            map.put("mch_id", ConstantUtils.PARTNER);
+            map.put("out_trade_no", orderNo);
+            map.put("nonce_str", WXPayUtil.generateNonceStr());
+
+            //设置请求
+            HttpClient client = new HttpClient("https://api.mch.weixin.qq.com/pay/orderquery");
+            client.setXmlParam(WXPayUtil.generateSignedXml(map, ConstantUtils.PARTNER_KEY));
+            client.setHttps(true);
+            client.post();
+
+            //获取返回内容
+            String xml = client.getContent();
+            //将xml转map
+            Map<String, String> resultMap = WXPayUtil.xmlToMap(xml);
+            return resultMap;
+        } catch (Exception e) {
+            throw  new HxException(20001,"获取支付状态失败");
+        }
+    }
+
+    @Override
+    public void updateState(Map map) {
+        String orderNo = String.valueOf(map.get("out_trade_no"));
+
+        QueryWrapper<Order> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("order_no",orderNo);
+        Order order = orderService.getOne(queryWrapper);
+
+        if(order.getStatus()==1){
+            return;
+        }
+        order.setStatus(1);
+        orderService.updateById(order);
+
+        //插入支付记录
+        PayLog payLog = new PayLog();
+        //支付订单号
+        payLog.setOrderNo(order.getOrderNo());
+        payLog.setPayTime(LocalDateTime.now());
+        //支付类型
+        payLog.setPayType(PayTypeEnum.WECHART);
+        payLog.setTotalFee(order.getPrice());//总金额(分)
+        payLog.setTradeState(TradeStateEnum.valueOf(String.valueOf(map.get("trade_state"))));//支付状态
+        payLog.setTransactionId(String.valueOf(map.get("transaction_id")));
+        //payLog.setAttr(JSONObject.toJSONString(map));
+        baseMapper.insert(payLog);//插入到支付日志表
     }
 }
