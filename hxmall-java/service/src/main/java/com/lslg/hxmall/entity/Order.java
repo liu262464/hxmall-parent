@@ -2,6 +2,7 @@ package com.lslg.hxmall.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.lslg.hxmall.entity.enums.PayStateEnum;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
  * @since 2020-10-19 18:03:09
  */
 
+@Data
 @TableName(value = "order")
 public class Order implements Serializable {
     private static final long serialVersionUID = -58702052591724198L;
